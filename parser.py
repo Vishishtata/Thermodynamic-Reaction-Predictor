@@ -12,32 +12,44 @@ reactants = None
 products = None
 
 for match in matches :
-    reactants = reaction[0:match.span()[0]]
-    products = reaction[match.span()[1]: ]
+   reactants = reaction[0:match.span()[0]]
+   products = reaction[match.span()[1]: ]
 
-reactants = reactants.strip()
-products = products.strip()
+reactants = reactants.split(r"+") #splitting reactants
+products = products.split(r"+") # splitting products
 
-pattern2 = r"\+"
+reactants_dictionary = {}
+products_dictionary = {}
 
-# Separating reactants
-matches_reactants = re.finditer(pattern2, reactants)
+# reactant dictionary
+for item in reactants :
+    item = item.strip()
+    if item[0].isdigit :
+        coeff = item[0]
+        compound = item[1: ]
+    else :
+        coeff = 1
+        compound = item[0: ]
+    
+    reactants_dictionary[compound] = coeff
 
-for match in matches_reactants :
-    reactants_left = reactants[0:match.span()[0]]
-    reactants_right = reactants[match.span()[1]: ]
-    reactants = reactants_left + reactants_right 
-# Separate products
-matches_products = re.finditer(pattern2, products)
+# products dictionary
+for item in products :
+    item = item.strip()
+    if item[0].isdigit :
+        coeff = item[0]
+        compound = item[1: ]
+    else :
+        coeff = 1
+        compound = item[0: ]
+    
+    products_dictionary[compound] = coeff
 
-for match in matches_products :
-   products_left = products[0:match.span()[0]]
-   products_right = products[match.span()[1]: ]
-   products = products_left + products_right 
+print(reactants_dictionary.items())
+print(products_dictionary.items())
 
 
 
 
 
-print(f"Reactants : {reactants}")
-print(f"Products : {products}")
+
