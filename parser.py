@@ -9,7 +9,7 @@ while True :
 
     if arrow_count != 1 :
         print("Reaction must contain only one arrow!!")
-        time.sleep(2)
+        time.sleep(4)
         continue
     
 
@@ -45,7 +45,7 @@ while True :
 
         if not compound :
             print("Invalid reaction Format!")
-            time.sleep(2)
+            time.sleep(3)
             continue
         
 
@@ -66,7 +66,7 @@ while True :
 
         if not compound :
             print("Invalid reaction Format!")
-            time.sleep(2)
+            time.sleep(3)
             continue
         
     
